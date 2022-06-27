@@ -1,0 +1,46 @@
+10:19:41 **** Incremental Build of configuration Debug for project Test_With_Nucleo ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:95:34: error: stray '\342' in program
+   95 |   sprintf((char*)txd_msg_buffer, â€œINPUT A CHRACTER:â€?);
+      |                                  ^
+../Core/Src/main.c:95:35: error: stray '\200' in program
+   95 |   sprintf((char*)txd_msg_buffer, â€œINPUT A CHRACTER:â€?);
+      |                                   ^
+../Core/Src/main.c:95:36: error: stray '\234' in program
+   95 |   sprintf((char*)txd_msg_buffer, â€œINPUT A CHRACTER:â€?);
+      |                                    ^
+../Core/Src/main.c:95:37: error: 'INPUT' undeclared (first use in this function)
+   95 |   sprintf((char*)txd_msg_buffer, â€œINPUT A CHRACTER:â€?);
+      |                                     ^~~~~
+../Core/Src/main.c:95:37: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main.c:95:42: error: expected ')' before 'A'
+   95 |   sprintf((char*)txd_msg_buffer, â€œINPUT A CHRACTER:â€?);
+      |                                          ^~
+      |                                          )
+../Core/Src/main.c:95:54: error: stray '\342' in program
+   95 |   sprintf((char*)txd_msg_buffer, â€œINPUT A CHRACTER:â€?);
+      |                                                      ^
+../Core/Src/main.c:95:55: error: stray '\200' in program
+   95 |   sprintf((char*)txd_msg_buffer, â€œINPUT A CHRACTER:â€?);
+      |                                                       ^
+../Core/Src/main.c:95:56: error: stray '\235' in program
+   95 |   sprintf((char*)txd_msg_buffer, â€œINPUT A CHRACTER:â€?);
+      |                                                        ^
+../Core/Src/main.c:96:22: error: 'huart6' undeclared (first use in this function); did you mean 'huart2'?
+   96 |   HAL_UART_Transmit(&huart6,txd_msg_buffer, strlen((char*)txd_msg_buffer), 1000)
+      |                      ^~~~~~
+      |                      huart2
+../Core/Src/main.c:96:81: error: expected ';' before 'while'
+   96 |   HAL_UART_Transmit(&huart6,txd_msg_buffer, strlen((char*)txd_msg_buffer), 1000)
+      |                                                                                 ^
+      |                                                                                 ;
+......
+  101 |   while (1)
+      |   ~~~~~                                                                          
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+
+10:19:42 Build Failed. 11 errors, 0 warnings. (took 925ms)
+

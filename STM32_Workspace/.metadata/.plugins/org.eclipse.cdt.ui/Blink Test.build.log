@@ -1,0 +1,20 @@
+10:53:45 **** Incremental Build of configuration Debug for project Blink Test ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Blink Test.elf" @"objects.list"   -mcpu=cortex-m4 -T"N:\ECE298\STM32_Workspace\Blink Test\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Blink Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Blink Test.elf
+ 
+arm-none-eabi-size   Blink\ Test.elf 
+arm-none-eabi-objdump -h -S  Blink\ Test.elf  > "Blink Test.list"
+arm-none-eabi-objcopy  -O binary  Blink\ Test.elf  "Blink Test.bin"
+   text	   data	    bss	    dec	    hex	filename
+   7304	     20	   1636	   8960	   2300	Blink Test.elf
+Finished building: default.size.stdout
+ 
+Finished building: Blink Test.bin
+ 
+Finished building: Blink Test.list
+ 
+
+10:53:47 Build Finished. 0 errors, 0 warnings. (took 2s.690ms)
+
