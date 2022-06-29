@@ -93,9 +93,9 @@ int main(void)
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
-  TIM2->PSC - 0;
-  TIM2->ARR -60000;
-  TIM2->CCR1 - 9;
+  TIM2->PSC  = 0; // for no scaling
+  TIM2->ARR = 20;
+  TIM2->CCR1 = 0;
   int TIM2_Ch1_DCVAL = 0;
   /* USER CODE END 2 */
 
@@ -103,17 +103,18 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  while(TIM2_Ch1_DCVAL < 20){
+	  		  TIM2_Ch1_DCVAL += (10);
+	  		  TIM2->CCR1 = TIM2_Ch1_DCVAL;
+	  		  HAL_Delay(1);
+	  	  }
+	  	  while(TIM2_Ch1_DCVAL > 0) {
+	  		  TIM2_Ch1_DCVAL -= (10);
+	  		  TIM2->CCR1 = TIM2_Ch1_DCVAL;
+	  		  HAL_Delay(1);
+	  	  }
     /* USER CODE END WHILE */
-	  while(TIM2_Ch1_DCVAL < 60000){
-		  TIM2_Ch1_DCVAL += (10);
-		  TIM2->CCR1 = TIM2_Ch1_DCVAL;
-		  HAL_Delay(1);
-	  }
-	  while(TIM2_Ch1_DCVAL > 0) {
-		  TIM2_Ch1_DCVAL -= (10);
-		  TIM2->CCR1 = TIM2_Ch1_DCVAL;
-		  HAL_Delay(1);
-	  }
+
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
